@@ -9,7 +9,7 @@ v-row.text-center.mt-5#home
   //-   v-btn(v-if="status !== 1" icon="mdi-play" variant="text" @click="startTimer")
   //-   v-btn(v-if="status === 1" icon="mdi-pause" variant="text" @click="pauseTimer")
   //-   v-btn(v-if="currentItem.length > 0" icon="mdi-skip-next" variant="text" @click="finishTimer")
-  v-col(order-sm="second").v-col-12.v-col-md-6.order-sm-2
+  v-col(order-sm="second").v-col-12.v-col-md-6
     v-col.v-col-12
       v-text-field(ref="input" v-model="newItem" variant="underlined" label="新增事項" :rules="[rules.required, rules.length]" @keydown.enter="onInputSubmit")
         template(#append)
@@ -27,7 +27,6 @@ v-row.text-center.mt-5#home
               td {{ item.nowTime }}
               td {{ item.name }}
   v-col.v-col-12.v-col-md-6.d-flex.flex-wrap.align-content-center.order-sm-first
-
     v-col.v-col-12.text-center
       p.text-h3.text-md-h1.font-weight-bold {{ currentTime }}
     v-col.v-col-12.text-center
@@ -61,10 +60,10 @@ const newItem = ref('') //
 let timer = 0
 //
 const rules = {
-  required(v) {
+  required (v) {
     return !!v || '欄位必填'
   },
-  length(v) {
+  length (v) {
     return v.length >= 3 || '必須三個字以上'
   }
 }
@@ -153,3 +152,5 @@ const currentTime = computed(() => {
   return m + ':' + s
 })
 </script>
+<style>
+</style>
