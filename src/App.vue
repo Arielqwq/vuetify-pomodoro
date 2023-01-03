@@ -10,7 +10,7 @@ v-app
   //-   v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
 
   v-navigation-drawer(expand-on-hover rail permanent width="180")
-    v-list-item(id="logo" avatar="https://github.com/Arielqwq/vuetify-pomodoro/blob/master/public/tomato.png")
+    v-list-item(:prepend-avatar="tomato")
     v-divider
     v-list(density="compact" nav)
       v-list-item(color="#d03c21" two-line prepend-icon="mdi-home" title="TIMER" value="TIMER" to="/")
@@ -29,10 +29,11 @@ v-app
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useSettingsStore } from "@/stores/settings";
-import { storeToRefs } from "pinia";
-const settings = useSettingsStore();
-const { notify } = storeToRefs(settings);
-const { toggleNotify } = settings;
+// import { ref } from 'vue'
+import { useSettingsStore } from '@/stores/settings'
+import { storeToRefs } from 'pinia'
+const settings = useSettingsStore()
+const { notify } = storeToRefs(settings)
+const { toggleNotify } = settings
+const tomato = new URL('@/assets/tomato.png', import.meta.url).href
 </script>
