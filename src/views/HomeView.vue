@@ -28,7 +28,7 @@ v-row.text-center.mt-5#home
               td {{ item.nowTime }}
               td {{ item.name }}
 
-  v-col.v-col-12.v-col-md-6.d-flex.flex-wrap.align-content-center.order-sm-first
+  v-col.ma-10.v-col-12.v-col-md-6.d-flex.flex-wrap.align-content-center.order-sm-first
     v-col.v-col-12.text-center
       p.text-h3.text-md-h1.font-weight-bold {{ currentTime }}
     v-col.v-col-12.text-center
