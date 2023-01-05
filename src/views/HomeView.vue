@@ -9,7 +9,8 @@ v-row.text-center.mt-5#home
   //-   v-btn(v-if="status !== 1" icon="mdi-play" variant="text" @click="startTimer")
   //-   v-btn(v-if="status === 1" icon="mdi-pause" variant="text" @click="pauseTimer")
   //-   v-btn(v-if="currentItem.length > 0" icon="mdi-skip-next" variant="text" @click="finishTimer")
-  v-col(order-sm="second").v-col-12.v-col-md-6
+
+  //- v-col(order-sm="second").v-col-12.v-col-md-6
     v-col.v-col-12
       v-text-field(ref="input" v-model="newItem" variant="underlined" label="新增事項" :rules="[rules.required, rules.length]" @keydown.enter="onInputSubmit")
         template(#append)
@@ -26,6 +27,7 @@ v-row.text-center.mt-5#home
             tr(v-for="item in items" :key="item.id")
               td {{ item.nowTime }}
               td {{ item.name }}
+
   v-col.v-col-12.v-col-md-6.d-flex.flex-wrap.align-content-center.order-sm-first
     v-col.v-col-12.text-center
       p.text-h3.text-md-h1.font-weight-bold {{ currentTime }}
@@ -43,6 +45,7 @@ import { ref, computed, onUnmounted } from 'vue'
 import { useListStore } from '@/stores/list'
 import { useSettingsStore } from '@/stores/settings'
 import { storeToRefs } from 'pinia'
+import Style from '../styles/style.css'
 
 const list = useListStore()
 const { currentItem, items, timeleft } = storeToRefs(list)
@@ -59,14 +62,14 @@ const input = ref(null)
 const newItem = ref('') //
 let timer = 0
 //
-const rules = {
-  required (v) {
-    return !!v || '欄位必填'
-  },
-  length (v) {
-    return v.length >= 3 || '必須三個字以上'
-  }
-}
+// const rules = {
+//   required(v) {
+//     return !!v || "欄位必填";
+//   },
+//   length(v) {
+//     return v.length >= 3 || "必須三個字以上";
+//   },
+// };
 const onInputSubmit = async () => {
   // validate 驗證 設定為 promise 因此需使用 async/await
   // 會回傳陣列，[]裡存放驗證內容
@@ -126,7 +129,7 @@ const finishTimer = () => {
   audio.play()
   if (notify.value) {
     // eslint-disable-next-line
-    const notification = new Notification('事項完成', {
+    const notification = new Notification("事項完成", {
       body: currentText.value,
       icon: 'https://github.com/wdaweb.png'
     })
@@ -140,17 +143,22 @@ const finishTimer = () => {
 // 事項文字
 const currentText = computed(() => {
   // 如果 items 有東西時則顯示 點擊開始
-  return currentItem.value.length > 0 ? currentItem.value : items.value.length > 0 ? 'CLICK TO START' : 'NO EVENTS'
+  return currentItem.value.length > 0
+    ? currentItem.value
+    : items.value.length > 0
+      ? 'CLICK TO START'
+      : 'NO EVENTS'
 })
 
 // 事項倒數計時
 const currentTime = computed(() => {
   // 分鐘
-  const m = Math.floor(timeleft.value / 60).toString().padStart(2, '0')
+  const m = Math.floor(timeleft.value / 60)
+    .toString()
+    .padStart(2, '0')
   // 秒數
   const s = (timeleft.value % 60).toString().padStart(2, '0')
   return m + ':' + s
 })
 </script>
-<style>
-</style>
+<style></style>
