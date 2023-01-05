@@ -43,9 +43,9 @@ export default defineConfig({
         short_name: 'Pomodoro',
         description: 'Vuetify 3 Pomodoro',
         // 工具列顏色，跟 VUIE 主色一樣
-        theme_color: '#1867C0',
+        theme_color: '#C62828',
         // 手機開啟時 icon 後面的背景色
-        background_color: '#1867C0',
+        background_color: '#C62828',
         // PWA 顯示的路徑範圍，超過範圍會另外開瀏覽器
         scope: './',
         // PWA 開啟的網址
