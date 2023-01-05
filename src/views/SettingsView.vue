@@ -1,8 +1,8 @@
 <template lang="pug">
-v-row#settings
-  v-col(cols="12")
+v-row#settings.my-8
+  v-col(cols="10")
     h1.text-center 設定
-  v-col(cols="12")
+  v-col(cols="10")
     v-table
       thead
         tr
@@ -23,6 +23,7 @@ v-row#settings
 <script setup>
 import { useSettingsStore } from '@/stores/settings'
 import { storeToRefs } from 'pinia'
+import '../styles/style.css'
 
 const settings = useSettingsStore()
 const { alarms, selectedAlarms } = storeToRefs(settings)

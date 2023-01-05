@@ -5,7 +5,7 @@ const timeBreak = parseInt(import.meta.env.VITE_TIME_BREAK)
 
 export const useListStore = defineStore({
   id: 'list',
-  state() {
+  state () {
     return {
       // 新增
       items: [],
@@ -23,7 +23,7 @@ export const useListStore = defineStore({
   },
   // 這裡放所有修改 state 的 function
   actions: {
-    addItem(name) {
+    addItem (name) {
       // 用 this. 指向 state
       this.items.push({
         id: this.id++,
@@ -35,44 +35,44 @@ export const useListStore = defineStore({
       })
     },
     // 取得選擇該項目的 id 值
-    getItemIndexById(id) {
+    getItemIndexById (id) {
       return this.items.findIndex(items => items.id === id)
     },
     // 開啟編輯
-    editItem(id) {
+    editItem (id) {
       const i = this.getItemIndexById(id)
       this.items[i].edit = true
     },
     // 刪除項目
-    delItem(id) {
+    delItem (id) {
       const i = this.getItemIndexById(id)
       this.items.splice(i, 1)
     },
     // 確認編輯
-    confirmEditItem(id) {
+    confirmEditItem (id) {
       const i = this.getItemIndexById(id)
       // name 換 成 新輸入的內容
       this.items[i].name = this.items[i].model
       this.items[i].edit = false
     },
     // 取消編輯
-    undoEditItem(id) {
+    undoEditItem (id) {
       const i = this.getItemIndexById(id)
       // name 換 回 新輸入的內容
       this.items[i].model = this.items[i].name
       this.items[i].edit = false
     },
-    start() {
+    start () {
       // this.currentItem = this.items[0].name
       // this.items.splice(0, 1)
       // 放在倒數事項中，要扣除其中一個事項
-      this.currentItem = this.break ? '休息一下' : this.items.shift().name
+      this.currentItem = this.break ? 'TAKE A BREAK' : this.items.shift().name
     },
-    countdown() {
+    countdown () {
       this.timeleft--
     },
     // 完成
-    finish() {
+    finish () {
       if (!this.break) {
         this.finishedItems.push({
           name: this.currentItem,
@@ -85,7 +85,7 @@ export const useListStore = defineStore({
       }
       this.timeleft = this.break ? timeBreak : time
     },
-    delFinishedItem(id) {
+    delFinishedItem (id) {
       const i = this.finishedItems.findIndex(item => item.id === id)
       this.finishedItems.splice(i, 1)
     }

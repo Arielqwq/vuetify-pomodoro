@@ -10,7 +10,8 @@ v-app
   //-   v-btn(:icon="notify ? 'mdi-bell' : 'mdi-bell-off'" variant="text" @click="toggleNotify")
 
   v-navigation-drawer(expand-on-hover rail permanent width="180")
-    v-list-item(:prepend-avatar="tomato")
+    v-list-item(:prepend-avatar="tomato" title="POMODORO")
+      //- title POMODORO
     v-divider
     v-list(density="compact" nav)
       v-list-item(color="#d03c21" two-line prepend-icon="mdi-home" title="TIMER" value="TIMER" to="/")

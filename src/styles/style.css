@@ -12,3 +12,23 @@
   justify-content: center;
   align-items: center;
 }
+#contentBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#tomatoImg {
+  margin: auto;
+  width: 300px;
+  height: 400px;
+  border-radius: 50%;
+  background: url(/src/styles/walkingtomato.gif);
+  background-position: 50%;
+  background-size: contain;
+}
+
+#settings{
+  display: flex;
+  justify-content: center;
+}

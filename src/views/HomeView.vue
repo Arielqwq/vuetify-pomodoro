@@ -36,8 +36,9 @@ v-row.text-center.mt-5#home
       v-btn.mr-5.mt-5(v-if="status !== 1" icon="mdi-play" varient="text" @click="startTimer")
       v-btn.mr-5.mt-5(v-else icon="mdi-pause" varient="text" @click="pauseTimer")
       v-btn.mt-5(v-if="currentItem.length > 0" icon="mdi-skip-next" varient="text" @click="finishTimer")
-    v-col(cols="12" style="height: 400px;")
-      TomatoImg
+    v-col.v-col-6.my-8#tomatoImg
+      //- v-img(src="../styles/walkingtomato.gif" style="height:400px; width:300px; display:inline;")
+
 </template>
 
 <script setup>
@@ -45,7 +46,7 @@ import { ref, computed, onUnmounted } from 'vue'
 import { useListStore } from '@/stores/list'
 import { useSettingsStore } from '@/stores/settings'
 import { storeToRefs } from 'pinia'
-import Style from '../styles/style.css'
+import '../styles/style.css'
 
 const list = useListStore()
 const { currentItem, items, timeleft } = storeToRefs(list)

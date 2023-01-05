@@ -1,5 +1,5 @@
 <template lang="pug">
-v-row#list
+v-row#list.my-8
   v-col.v-col-5
     v-col(cols="12")
     h1.text-center 待辦事項
@@ -50,7 +50,7 @@ v-row#list
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useListStore } from '@/stores/list'
-import Style from '../styles/style.css'
+import '../styles/style.css'
 
 const list = useListStore()
 const { addItem, editItem, delItem, confirmEditItem, undoEditItem, delFinishedItem } = list
